@@ -1,41 +1,25 @@
 
-def split_full_name(full_name):
-    split_name = tuple(full_name.split())
-    return split_name
+def split_full_name(full_name: str) -> tuple[str, ...]:
+    return tuple(full_name.split())
 
-split_name = split_full_name("Иван Петров Сергеевич")
-print(split_name)
+def make_initials(first: str, last: str) -> str:
+    return f'{first[0]}. {last}'
 
-def make_initials(first, last):
-    a = first[0]+'.'
-    full = f'{a} {last}'
-    return full
+def count_vowels(text:str) -> int:
+    VOWELS = 'aeiouуеыаоэяиюё'
+    return sum(1 for char in text.lower() if char in VOWELS)
 
-print(make_initials('Иван', 'Петров'))
+def reverse_words(sentence: str) -> str:
+    return ' '.join(sentence.split()[::-1])
 
-gl = 'уеыаоэяиюeuioaqwy'
-def count_vowels(text):
-    count = 0
-    string = text.lower()
-    for chat in string:
-        if chat in gl:
-            count += 1
-    return count
-
-print(count_vowels('Доброго вечера my little friends'))
+def is_palindrome(text:str) -> bool:
+    phrase = text.lower().replace(" ", "")
+    return phrase == phrase[::-1]
 
 
-def reverse_words(sentence):
-    a = sentence.split()
-    a.reverse()
-    return ' '.join(a)
-
-print(reverse_words('Доброго вечера друзья'))
-
-def is_palindrome(text):
-    a = (text.replace(" ", "")).lower()
-    b = a[::-1]
-    if a == b:
-        return True
-
-print(is_palindrome('А роза упала на лапу Азора'))
+if __name__ == '__main__':
+    print(split_full_name("Иван Петров Сергеевич"))
+    print(make_initials("Иван", "Петров"))
+    print(count_vowels("Доброго вечера my little friends"))
+    print(reverse_words('hello world python'))
+    print(is_palindrome('А роза упала на лапу Азора'))
