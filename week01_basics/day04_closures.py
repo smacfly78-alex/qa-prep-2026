@@ -24,8 +24,6 @@ def make_counter() -> tuple[Callable[[], int], Callable[[], None]]:
     return increment, reset
 
 
-
-
 if __name__ == '__main__':
     # Power
     square = make_power(2)
