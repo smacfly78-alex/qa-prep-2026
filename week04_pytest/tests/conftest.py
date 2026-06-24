@@ -11,3 +11,12 @@ def users_list() -> list[User]:
     user_2 = User("Anna", "anna@example.com", 17)
     user_3 = User("Dmitry", "dmitry@example.com", 45)
     return [user_1, user_2, user_3]
+
+
+@pytest.fixture
+def sample_dicts() -> list[dict[str, int]]:
+    return [
+        {"a": 1, "b": 2},
+        {"b": 3, "c": 4},
+        {"a": 10, "c": 5},
+    ]

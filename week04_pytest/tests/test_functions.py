@@ -46,3 +46,13 @@ def test_calculate_score_raises_when_correct_exceeds_total() -> None:
                                                   ('hello', False), ('', True)])
 def test_is_palindrome(input_text: str, expected: bool) -> None:
     assert is_palindrome(input_text) == expected
+
+
+@pytest.mark.parametrize("correct,total,match_text", [
+    (8, 0, "positive"),
+    (-1, 10, "negative"),
+    (15, 10, "exceed"),
+])
+def test_calculate_score_raises(correct: int,total: int, match_text: str) -> None:
+    with pytest.raises(ValueError, match=match_text):
+        calculate_score(correct,total)
