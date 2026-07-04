@@ -24,3 +24,21 @@ def fetch_user_name_safe(user_id: int) -> str | None:
         return None
     except requests.Timeout:
         return None
+
+
+def fetch_and_notify(user_id: int, phone: str) -> bool:
+    """Fetches user data and sends SMS notification. Returns success bool."""
+    try:
+        response = requests.get(
+            f"https://api.example.com/users/{user_id}",
+            timeout=5
+        )
+        response.raise_for_status()
+        user_name = response.json()["name"]
+    except (requests.ConnectionError, requests.Timeout, requests.HTTPError):
+        return False
+
+    # Отправляем SMS
+    from week05_api.src.sms_client import send_sms
+    send_sms(phone, f"Hello, {user_name}!")
+    return True
