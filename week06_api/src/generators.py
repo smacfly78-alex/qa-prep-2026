@@ -1,5 +1,5 @@
 import random
-from typing import Iterator
+from typing import Iterator, Any, Generator
 
 
 def random_numbers(minimum: int = 1, maximum: int = 100) -> Iterator[int]:
@@ -7,7 +7,43 @@ def random_numbers(minimum: int = 1, maximum: int = 100) -> Iterator[int]:
         yield random.randint(minimum, maximum)
 
 
+class Employee:
+    role: str = "employee"
+
+    def __init__(self, name: str) -> None:
+        self.name = name
+
+    def introduce(self) -> str:
+        # ← ИСПРАВЬТЕ ЗДЕСЬ
+        return f"I am {self.name}, a {self.role}"
+
+
+class Manager(Employee):
+    role = "manager"
+
+
+class Intern(Employee):
+    role = "intern"
+
+
+def fibonacci(n: int) -> Iterator[int]:
+    a = 0
+    b = 1
+    for num in range(n):
+        yield a
+        a, b = b, a + b
+
+
 if __name__ == '__main__':
+    m = Manager("Igor")
+    i = Intern("Anna")
+    e = Employee("Bob")
+
+    print(m.introduce())  # I am Igor, a manager
+    print(i.introduce())  # I am Anna, a intern
+    print(e.introduce())  # I am Bob, a employee
+
+
     from itertools import islice
 
     gen = random_numbers()
