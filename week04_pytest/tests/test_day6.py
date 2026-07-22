@@ -10,3 +10,6 @@ from src.day6.task_08_count_by_length import count_words_by_length
 def test_count_words_by_length(input_text: str, expected: dict[int, int]) -> None:
     assert count_words_by_length(input_text) == expected
 
+
+
+
