@@ -17,3 +17,13 @@ try:
 except TypeError as e:
     print(f'{e} - некорректный тип')
 
+
+def bytearray_demo() -> None:
+    b_ar = bytearray("QA Test", "utf-8")
+
+    b_ar[0] = ord('B')
+
+    result = b_ar.decode("utf-8")
+    print(result)
+
+
